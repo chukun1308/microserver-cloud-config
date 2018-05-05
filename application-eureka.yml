@@ -6,10 +6,12 @@ spring:
 ---
 server:
   port: 7001
+  
 spring:
    profiles: dev  #开发环境
    application:
     name: microservicecloud-eureka-dev
+    
 #配置eureka
 eureka:
   instance:
@@ -23,11 +25,13 @@ eureka:
        
 ---
 server:
-  port: 7001
+  port: 7002
+  
 spring:
    profiles: test  #开发环境
    application:
     name: microservicecloud-eureka-test
+    
 #配置eureka
 eureka:
   instance:
@@ -37,4 +41,4 @@ eureka:
     fetch-registry: false   #表示自己端就是注册中心，职责是维护服务实例，并不需要去检索服务
     service-url:
        #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址（单机）
-       defaultZone: http://eureka01.com:7001/eureka/
+       defaultZone: http://eureka01.com:7002/eureka/
