@@ -1,0 +1,11 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: microserver-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:chukun1308/microserver-cloud-config.git #github上面git仓库的地址
