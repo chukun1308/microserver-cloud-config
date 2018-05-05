@@ -1,0 +1,81 @@
+spring:
+  profiles:
+    active: 
+    - dev
+
+---
+server:
+  port: 8001
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.chukun.springcloud.beans          # 所有Bean别名类所在包
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+
+spring:
+   profiles: dev  #开发环境
+   application:
+    name: microservicecloud-dept
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver                # mysql驱动包
+    url: jdbc:mysql://localhost:3306/springcloud01              # 数据库名称
+    username: root
+    password: mysql
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+
+eureka:
+  client:  #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka01.com:7001/eureka/
+  instance:
+    instance-id: microserver-config-dept-dev  #注册进eureka的服务的名称
+    prefer-ip-address: true  #鼠标放到eureka的服务名字，可以显示ip地址
+
+info:
+  app.name: chukun-microservicecloud-dept
+  company.name: www.hualala.com
+
+---  
+server:
+  port: 8002
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml        # mybatis配置文件所在路径
+  type-aliases-package: com.chukun.springcloud.beans          # 所有Bean别名类所在包
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
+
+spring:
+   profiles: test  #开发环境
+   application:
+    name: microservicecloud-dept
+   datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.jdbc.Driver                # mysql驱动包
+    url: jdbc:mysql://localhost:3306/springcloud02              # 数据库名称
+    username: root
+    password: mysql
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+
+eureka:
+  client:  #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka01.com:7001/eureka/
+  instance:
+    instance-id: microserver-config-dept-test  #注册进eureka的服务的名称
+    prefer-ip-address: true  #鼠标放到eureka的服务名字，可以显示ip地址
+
+info:
+  app.name: chukun-microservicecloud-dept
+  company.name: www.hualala.com
+ 
